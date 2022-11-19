@@ -1,6 +1,6 @@
 ```
 bank=# select * from client order by id;
-```
+
 
  id |              fio               | date_of_birth |    phone    
 ----+--------------------------------+---------------+-------------
@@ -11,7 +11,7 @@ bank=# select * from client order by id;
   5 | Помидоров Платон Галактионович | 1931-10-10    | 79999999999
   6 | Багров Данила Сергеевич        | 1975-08-05    | 79999869034
 (6 rows)
-
+```
 
 ```
 bank=# select * from card order by 2;
