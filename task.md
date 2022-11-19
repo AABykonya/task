@@ -77,6 +77,14 @@ select fio from client where id in (select V.client_id from Visa V join Master M
 
 4. Вывести список клиентов, фамилия которых начинается на «П» и заканчивается на «В».
 
+bank=# select * from client where fio ~ '^П[а-я]*в\s';
+
+```
+ id |              fio               | date_of_birth |    phone    
+----+--------------------------------+---------------+-------------
+  5 | Помидоров Платон Галактионович | 1931-10-10    | 79999999999
+(1 row)
+```
 
   
   
