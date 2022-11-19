@@ -15,7 +15,7 @@ bank=# select * from client order by id;
 
 ```
 bank=# select * from card order by 2;
-```
+
 
  id | client_id |    cardnumber    | expire_date 
 ----+-----------+------------------+-------------
@@ -27,7 +27,7 @@ bank=# select * from card order by 2;
   6 |         4 | 3564945124364356 | 2038-11-11
   7 |         5 | 4398573424349944 | 2038-11-11
 (7 rows)
-
+```
 
 
 
@@ -37,13 +37,13 @@ bank=# select * from card order by 2;
 bank=# select cl.fio from client cl 
 left join card cd on cl.id = cd.client_id 
 where cd.client_id is NULL order by cl.fio;
-```
+
 
 fio           
 -------------------------
  Багров Данила Сергеевич
 (1 row)
-
+```
 
 2. Найти ФИО клиентов, у которых имеется более двух карт.
 
@@ -53,12 +53,13 @@ join card cd on cl.id = cd.client_id
 group by cl.fio 
 having count(cd.client_id) > 2 
 order by cl.fio;
-```
+
 
          fio          | count 
 ----------------------+-------
  Тиньков Олег Юрьевич |     3
 (1 row)
+```
 
 3. Вывести список клиентов, у которых есть и карта Visa (cardnumber начинается на «4»), и карта Mastercard (cardnumber начинается на «5»).
 
@@ -66,12 +67,13 @@ order by cl.fio;
 bank=# with Visa as (select client_id from card cd where cd.cardnumber like '4%'), 
 Master as (select client_id from card cd where cd.cardnumber like '5%') 
 select fio from client where id in (select V.client_id from Visa V join Master M on V.client_id = M.client_id);
-```
+
 
  fio          
 ----------------------
  Тиньков Олег Юрьевич
 (1 row)
+```
 
 4. Вывести список клиентов, фамилия которых начинается на «П» и заканчивается на «В».
 
