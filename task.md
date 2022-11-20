@@ -88,8 +88,10 @@ bank=# select * from client where fio ~ '^П[а-я]*в\s';
 
 5. Вывести список всех клиентов с признаком совершеннолетия в формате: client.fio, client.date_of_birth, isAdult («+» если клиенту 18 и более лет; «-» если клиент моложе 18 лет)
 
-```
+
 bank=# select fio, date_of_birth, case when (date_part('year', age(date_of_birth)) >= 18) THEN '+' ELSE '-' END from client;
+
+```
               fio               | date_of_birth | case 
 --------------------------------+---------------+------
  Тиньков Олег Юрьевич           | 1967-12-25    | +
